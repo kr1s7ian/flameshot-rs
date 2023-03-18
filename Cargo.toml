@@ -3,6 +3,8 @@ name = "flameshot-rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["kr1s7ian"]
+license = "GNU General Public License v3.0"
+license-file = "LICENSE"
 description = "Easily integrate flameshot in your project, optionally using the image crate features."
 [lib]
 name = "flameshot"
@@ -16,6 +18,12 @@ path = "examples/save_full_screenshot.rs"
 [[example]]
 name = "save-gui-screenshot"
 path = "examples/save_gui_screenshot.rs"
+
+[[example]]
+name = "to-dynamic-image"
+path = "examples/to_dynamic_image.rs"
+
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
