@@ -1,3 +1,4 @@
+#[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 use std::process::Command;
 use std::{fmt::format, process::Output};
@@ -6,6 +7,7 @@ use crate::CmdParameters;
 
 #[derive(Clone, Debug, Eq, PartialEq, PartialOrd, Hash, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+/// Allows to build parameters for flameshot gui capture
 pub struct GuiArgs {
     path: Option<String>,
     clipboard: bool,

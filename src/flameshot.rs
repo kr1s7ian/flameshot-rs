@@ -11,18 +11,26 @@ use std::str::from_utf8;
 pub mod errors;
 pub mod params;
 
+/// Implements Cli parameters for flameshot.
 pub trait CmdParameters {
     fn generate_args(&self) -> Vec<String>;
 }
 
+/// Gets returned from flameshot::execute(CmdParams)
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct FlameshotOutput {
     pub output: Output,
     raw_enabled: bool,
 }
 
+/// Checks if flameshot stderr has produced an error
+pub fn has_error(stderr: &str) -> bool {
+    return stderr.contains("error");
+}
+
 #[cfg(feature = "image")]
 impl FlameshotOutput {
+    /// Consumes self and returns a dynamic_image from the flameshot stdout, requires .raw() in CmdParams
     pub fn to_dynamic_image(self) -> Result<DynamicImage, FlameshotError> {
         if self.raw_enabled == false {
             return Err(FlameshotError::Image(
@@ -45,6 +53,7 @@ impl FlameshotOutput {
     }
 }
 
+/// Executes a flameshot cli command with the specified CmdParameters
 pub fn execute(params: impl CmdParameters) -> Result<FlameshotOutput, FlameshotError> {
     let args = params.generate_args();
     let raw_enabled = args.contains(&String::from("--raw"));
@@ -54,15 +63,10 @@ pub fn execute(params: impl CmdParameters) -> Result<FlameshotOutput, FlameshotE
         Ok(output) => output,
         Err(e) => return Err(FlameshotError::Os(e.to_string())),
     };
+    let stderr = from_utf8(&output.stderr).unwrap_or("").to_string();
 
-    match output.stderr.len() > 4 {
-        true => {
-            let error_message = from_utf8(&output.stderr)
-                .unwrap_or("Error message is corrupted!")
-                .to_string();
-
-            Err(FlameshotError::Flameshot(error_message))
-        }
+    match has_error(&stderr) {
+        true => Err(FlameshotError::Flameshot(stderr)),
         false => Ok(FlameshotOutput {
             output,
             raw_enabled,

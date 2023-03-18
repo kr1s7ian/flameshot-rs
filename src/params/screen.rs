@@ -7,6 +7,7 @@ use crate::CmdParameters;
 
 #[derive(Clone, Debug, Eq, PartialEq, PartialOrd, Hash, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+/// Allows to build parameters for flameshot screen capture
 pub struct ScreenArgs {
     number: usize,
     clipboard: bool,
