@@ -3,7 +3,7 @@ name = "flameshot-rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["kr1s7ian"]
-license = "GNU General Public License v3.0"
+license = "GNU General Public License version 3"
 license-file = "LICENSE"
 description = "Easily integrate flameshot in your project, optionally using the image crate features."
 [lib]
