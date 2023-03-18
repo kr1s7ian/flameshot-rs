@@ -3,7 +3,7 @@ name = "flameshot-rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["kr1s7ian"]
-description = "A library to easily integrate flameshot into your project, optionally with the image crate features"
+description = "Easily integrate flameshot in your project, optionally using the image crate features."
 [lib]
 name = "flameshot"
 path = "src/flameshot.rs"
@@ -17,9 +17,6 @@ path = "examples/save_full_screenshot.rs"
 name = "save-gui-screenshot"
 path = "examples/save_gui_screenshot.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[features]
-default = ["image"]
 
 [dependencies]
 serde = { version = "1.0.157", optional = true, features = ["derive"] }
