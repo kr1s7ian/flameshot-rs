@@ -32,7 +32,7 @@ fn has_error(stderr: &str) -> bool {
 impl FlameshotOutput {
     /// Consumes self and returns a dynamic_image from the flameshot stdout, requires .raw() in CmdParams
     pub fn to_dynamic_image(self) -> Result<DynamicImage, FlameshotError> {
-        if self.raw_enabled == false {
+        if !self.raw_enabled {
             return Err(FlameshotError::Image(
                 "You forgot to add .raw() to the param builder! which is a requirement for converting to a dynamic_image.".to_string(),
             ));
