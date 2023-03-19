@@ -25,7 +25,7 @@ pub struct FlameshotOutput {
 
 /// Checks if flameshot stderr has produced an error
 fn has_error(stderr: &str) -> bool {
-    return stderr.contains("error");
+    stderr.contains("error")
 }
 
 #[cfg(feature = "image")]
