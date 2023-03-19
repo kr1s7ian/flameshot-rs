@@ -75,6 +75,7 @@ impl CmdParameters for GuiArgs {
         args
     }
 }
+#[derive(Default)]
 pub struct GuiArgsBuilder {
     path: Option<String>,
     clipboard: bool,
@@ -87,24 +88,6 @@ pub struct GuiArgsBuilder {
     pin: bool,
     accept_on_select: bool,
     pub args: Vec<String>,
-}
-
-impl Default for GuiArgsBuilder {
-    fn default() -> Self {
-        Self {
-            path: None,
-            clipboard: false,
-            delay: None,
-            region: None,
-            last_region: false,
-            raw: false,
-            print_geometry: false,
-            upload: false,
-            pin: false,
-            accept_on_select: false,
-            args: vec![],
-        }
-    }
 }
 
 impl GuiArgsBuilder {

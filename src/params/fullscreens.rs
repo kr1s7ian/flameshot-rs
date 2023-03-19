@@ -54,6 +54,8 @@ impl CmdParameters for FullscreensArgs {
         args
     }
 }
+
+#[derive(Default)]
 pub struct FullscreensArgsBuilder {
     path: Option<String>,
     clipboard: bool,
@@ -62,20 +64,6 @@ pub struct FullscreensArgsBuilder {
     raw: bool,
     upload: bool,
     args: Vec<String>,
-}
-
-impl Default for FullscreensArgsBuilder {
-    fn default() -> Self {
-        Self {
-            path: None,
-            clipboard: false,
-            delay: None,
-            region: None,
-            raw: false,
-            upload: false,
-            args: vec![],
-        }
-    }
 }
 
 impl FullscreensArgsBuilder {

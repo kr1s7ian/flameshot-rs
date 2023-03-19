@@ -56,6 +56,8 @@ impl CmdParameters for ScreenArgs {
         args
     }
 }
+
+#[derive(Default)]
 pub struct ScreenArgsBuilder {
     number: usize,
     path: Option<String>,
@@ -66,22 +68,6 @@ pub struct ScreenArgsBuilder {
     upload: bool,
     pin: bool,
     args: Vec<String>,
-}
-
-impl Default for ScreenArgsBuilder {
-    fn default() -> Self {
-        Self {
-            number: 0,
-            path: None,
-            clipboard: false,
-            delay: None,
-            region: None,
-            raw: false,
-            upload: false,
-            pin: false,
-            args: vec![],
-        }
-    }
 }
 
 impl ScreenArgsBuilder {
