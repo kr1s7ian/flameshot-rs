@@ -24,7 +24,7 @@ pub struct FlameshotOutput {
 }
 
 /// Checks if flameshot stderr has produced an error
-pub fn has_error(stderr: &str) -> bool {
+fn has_error(stderr: &str) -> bool {
     return stderr.contains("error");
 }
 
@@ -57,12 +57,11 @@ impl FlameshotOutput {
 pub fn execute(params: impl CmdParameters) -> Result<FlameshotOutput, FlameshotError> {
     let args = params.generate_args();
     let raw_enabled = args.contains(&String::from("--raw"));
-    let command = Command::new("flameshot").args(args).output();
+    let output = Command::new("flameshot")
+        .args(args)
+        .output()
+        .map_err(|e| FlameshotError::Os(e.to_string()))?;
 
-    let output = match command {
-        Ok(output) => output,
-        Err(e) => return Err(FlameshotError::Os(e.to_string())),
-    };
     let stderr = from_utf8(&output.stderr).unwrap_or("").to_string();
 
     match has_error(&stderr) {
