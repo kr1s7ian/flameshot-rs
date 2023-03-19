@@ -1,7 +1,5 @@
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-use std::process::Command;
-use std::{fmt::format, process::Output};
 
 use crate::CmdParameters;
 
