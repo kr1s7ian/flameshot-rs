@@ -1,12 +1,11 @@
 [package]
 name = "flameshot-rs"
-version = "0.1.2"
+version = "1.0.0"
 edition = "2021"
 authors = ["kr1s7ian"]
 license = "GPL-3.0-only"
 readme = "README.md"
 repository = "https://github.com/kr1s7ian/flameshot-rs"
-license-file = "LICENSE"
 description = "Easily integrate flameshot in your project, optionally using the image crate features."
 [lib]
 name = "flameshot"
