@@ -1,6 +1,6 @@
-use flameshot::params::FullArgs;
-//use flameshot::params::GuiArgs;
-//use flameshot::params::ScreenArgs;
+use flameshot::FullArgs;
+//use flameshot::GuiArgs;
+//use flameshot::ScreenArgs;
 
 pub fn main() {
     /// We select one of the 3 main param types and use the builder method to

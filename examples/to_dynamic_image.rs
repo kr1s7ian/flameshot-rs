@@ -1,6 +1,6 @@
-//use flameshot::params::FullArgs;
-use flameshot::params::GuiArgs;
-//use flameshot::params::ScreenArgs;
+//use flameshot::FullArgs;
+use flameshot::GuiArgs;
+//use flameshot::ScreenArgs;
 
 //////////////////////////////////////////////////////////////////////
 // If we enable "image" library Feature, we will be able to convert//

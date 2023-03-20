@@ -3,9 +3,9 @@ Easily integrate flameshot into your application by leveraging it's simple cli a
 This example is using the 'image' crate feature.
 
 ```rust
-//use flameshot::params::FullArgs;
-use flameshot::params::GuiArgs;
-//use flameshot::params::ScreenArgs;
+//use flameshot::FullArgs;
+use flameshot::GuiArgs;
+//use flameshot::ScreenArgs;
 
 //////////////////////////////////////////////////////////////////////
 // If we enable "image" library Feature, we will be able to convert//
@@ -28,6 +28,8 @@ pub fn main() {
 
     let convert_black_and_white = img.to_luma8().save("black_and_white.png").unwrap();
 }
+
+
 ```
 
 Make sure to install flameshot and add it to your env path. Now you are ready to use this crate to grab screenshots using flameshot while being able to optionally get a dynamic_image of the screenshot for manipulation. If you don't want to use dynamic_image or image crate at all you can find the raw image in the stdout field of FlameshotOutput.output
