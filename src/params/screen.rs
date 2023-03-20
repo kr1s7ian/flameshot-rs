@@ -27,6 +27,11 @@ impl ScreenArgs {
 impl CmdParameters for ScreenArgs {
     fn generate_args(&self) -> Vec<String> {
         let mut args = vec![String::from("screen")];
+
+        if self.number != 0 {
+            args.push(format!("--number={}", self.number));
+        }
+
         if let Some(path) = self.path.to_owned() {
             args.push(format!("--path={path}"));
         };
