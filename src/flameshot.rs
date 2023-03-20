@@ -3,11 +3,14 @@ use image::{io::Reader as ImageReader, DynamicImage};
 #[cfg(feature = "image")]
 use std::io::Cursor;
 
-use crate::flameshot_error::FlameshotError;
 use std::process::Command;
 use std::process::Output;
-
 use std::str::from_utf8;
+
+pub use crate::flameshot_error::FlameshotError;
+pub use crate::params::FullArgs;
+pub use crate::params::GuiArgs;
+pub use crate::params::ScreenArgs;
 pub mod flameshot_error;
 pub mod params;
 
