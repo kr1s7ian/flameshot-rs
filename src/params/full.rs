@@ -6,7 +6,7 @@ use crate::CmdParameters;
 #[derive(Clone, Debug, Eq, PartialEq, PartialOrd, Hash, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 /// Allows to build parameters for flameshot full capture
-pub struct FullscreensArgs {
+pub struct FullArgs {
     path: Option<String>,
     clipboard: bool,
     delay: Option<usize>,
@@ -16,13 +16,13 @@ pub struct FullscreensArgs {
     pub args: Vec<String>,
 }
 
-impl FullscreensArgs {
-    pub fn builder() -> FullscreensArgsBuilder {
-        FullscreensArgsBuilder::default()
+impl FullArgs {
+    pub fn builder() -> FullArgsBuilder {
+        FullArgsBuilder::default()
     }
 }
 
-impl CmdParameters for FullscreensArgs {
+impl CmdParameters for FullArgs {
     fn generate_args(&self) -> Vec<String> {
         let mut args = vec![String::from("full")];
         if let Some(path) = self.path.to_owned() {
@@ -56,7 +56,7 @@ impl CmdParameters for FullscreensArgs {
 }
 
 #[derive(Default)]
-pub struct FullscreensArgsBuilder {
+pub struct FullArgsBuilder {
     path: Option<String>,
     clipboard: bool,
     delay: Option<usize>,
@@ -66,7 +66,7 @@ pub struct FullscreensArgsBuilder {
     args: Vec<String>,
 }
 
-impl FullscreensArgsBuilder {
+impl FullArgsBuilder {
     pub fn path(mut self, path: &str) -> Self {
         self.path = Some(path.to_string());
         self
@@ -97,8 +97,8 @@ impl FullscreensArgsBuilder {
         self
     }
 
-    pub fn build(self) -> FullscreensArgs {
-        let mut cmd = FullscreensArgs {
+    pub fn build(self) -> FullArgs {
+        let mut cmd = FullArgs {
             path: self.path,
             clipboard: self.clipboard,
             delay: self.delay,
